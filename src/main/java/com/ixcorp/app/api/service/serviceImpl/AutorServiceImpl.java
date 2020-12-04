@@ -1,4 +1,4 @@
-package com.ixcorp.app.api.serviceImpl;
+package com.ixcorp.app.api.service.serviceImpl;
 
 import com.ixcorp.app.api.config.ObjectMapperUtils;
 import com.ixcorp.app.api.domain.Autor;

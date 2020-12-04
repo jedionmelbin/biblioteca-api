@@ -7,6 +7,10 @@ public class ServiceResult {
     private String message;
     private String error;
 
+    public ServiceResult() {
+        this.success = true;
+    }
+
     public boolean isSuccess() {
         return success;
     }

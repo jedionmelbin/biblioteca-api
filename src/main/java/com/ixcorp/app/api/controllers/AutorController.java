@@ -4,6 +4,8 @@ import com.ixcorp.app.api.config.ServiceResult;
 
 import com.ixcorp.app.api.dto.AutorDTO;
 import com.ixcorp.app.api.service.AutorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/autor")
+@RequestMapping("api/autores")
+@CrossOrigin(origins = "*")
 public class AutorController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PrestamoController.class);
 
 
     @Autowired
@@ -76,7 +81,7 @@ public class AutorController {
 
     }
 
-    @PutMapping("/getById")
+    @GetMapping("/getById")
     public ResponseEntity<ServiceResult> getByAutorId(@PathVariable("id") Long id) {
 
 

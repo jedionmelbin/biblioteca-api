@@ -12,7 +12,7 @@ public class Editorial {
     private Long editorialId;
 
     @Column(name =  "nombre")
-    private String nombres;
+    private String descripcion;
 
     public Long getEditorialId() {
         return editorialId;
@@ -22,11 +22,11 @@ public class Editorial {
         this.editorialId = editorialId;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

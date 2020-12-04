@@ -1,6 +1,8 @@
 package com.ixcorp.app.api.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class LibroDTO {
@@ -12,9 +14,13 @@ public class LibroDTO {
 
     private String genero;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaEmision;
 
     private AutorDTO autors;
+
+    private EditorialDTO editorials;
+
 
     public Long getLibroId() {
         return libroId;
@@ -54,5 +60,13 @@ public class LibroDTO {
 
     public void setAutors(AutorDTO autors) {
         this.autors = autors;
+    }
+
+    public EditorialDTO getEditorials() {
+        return editorials;
+    }
+
+    public void setEditorials(EditorialDTO editorials) {
+        this.editorials = editorials;
     }
 }

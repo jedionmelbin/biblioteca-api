@@ -3,6 +3,8 @@ package com.ixcorp.app.api.controllers;
 import com.ixcorp.app.api.config.ServiceResult;
 import com.ixcorp.app.api.dto.LibroDTO;
 import com.ixcorp.app.api.service.LibroService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping("api/libros")
 public class LibroController {
 
+    private static final Logger logger = LoggerFactory.getLogger(PrestamoController.class);
 
     @Autowired
     private LibroService libroService;
@@ -75,7 +78,7 @@ public class LibroController {
 
     }
 
-    @PutMapping("/getById")
+    @GetMapping("/getById")
     public ResponseEntity<ServiceResult> getByAutorId(@PathVariable("id") Long id) {
 
 

@@ -1,4 +1,4 @@
-package com.ixcorp.app.api.config;
+package com.ixcorp.app.api.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +29,8 @@ public class SpringFoxConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "Banco Cuentas Service API",
-                "Banco Service API Description",
+                "Biblioteca Open Source Service API",
+                "Biblioteca Service API Description",
                 "1.0",
                 "http://ixcorp.com.pe/terms",
                 new Contact("JedionMelbin", "https://ixcorp.com.pe", "apis@ixcorp.com"),
