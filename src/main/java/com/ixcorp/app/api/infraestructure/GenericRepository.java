@@ -1,4 +1,4 @@
 package com.ixcorp.app.api.infraestructure;
 
-public class GenericRepository {
+public class GenericRepository<T>{
 }

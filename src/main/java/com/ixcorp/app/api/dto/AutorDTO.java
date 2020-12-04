@@ -1,36 +1,22 @@
-package com.ixcorp.app.api.domain;
+package com.ixcorp.app.api.dto;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name = "autor")
-public class Autor {
+public class AutorDTO implements Serializable {
+    public AutorDTO() {
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "autor_id")
     private long autorId;
-
-    @Column(name = "nombres")
     private String nombres;
-
-    @Column(name =  "apellidos")
     private String apellidos;
-
-    @Column(name =  "nacionalidad")
     private String nacionalidad;
-
-    @Column(name = "sexo")
     private String sexo;
 
-
-    @Column(name =  "fecha_nacim")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaNacimiento;
-
-
-    public Autor() {
-    }
 
     public long getAutorId() {
         return autorId;
@@ -79,6 +65,4 @@ public class Autor {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
-
 }
