@@ -15,6 +15,9 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long prestamoId;
 
+    @Column(name = "descripcion")
+    private String  descripcion;
+
     @Column(name = "fecha_emision")
     private Date fechaEmision;
 

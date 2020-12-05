@@ -11,6 +11,8 @@ public class PrestamoDTO {
 
     private  Long prestamoId;
 
+    private String  descripcion;
+
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaEmision;
 
@@ -71,6 +73,14 @@ public class PrestamoDTO {
 
     public void setClientes(ClienteDTO clientes) {
         this.clientes = clientes;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
