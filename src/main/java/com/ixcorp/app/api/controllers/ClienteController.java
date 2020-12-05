@@ -19,19 +19,16 @@ public class ClienteController {
 
 
     @Autowired
-    private ClienteService  clienteService;
+    private ClienteService clienteService;
 
     @GetMapping("/listaCliente")
-    public ResponseEntity<ServiceResult> listarAutor() {
+    public List<ClienteDTO> listarAutor() {
 
         try {
 
             ServiceResult result = new ServiceResult();
             List<ClienteDTO> clienteDTOS = clienteService.listarCliente();
-
-            result.setData(clienteDTOS);
-
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return clienteDTOS;
 
         } catch (Exception ex) {
             ex.printStackTrace();

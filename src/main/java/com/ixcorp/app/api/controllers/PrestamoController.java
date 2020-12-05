@@ -87,7 +87,7 @@ public class PrestamoController {
     }
 
     @GetMapping("/listarPrestamos")
-    public ResponseEntity<ServiceResult> listarPrestamo() {
+    public List<PrestamoDTO> listarPrestamo() {
 
         try {
 
@@ -96,9 +96,7 @@ public class PrestamoController {
 
             List<PrestamoDTO> prestamoDTOS = prestamoService.listarPrestamo(parameters);
 
-            result.setData(prestamoDTOS);
-
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return prestamoDTOS;
 
         } catch (Exception ex) {
             ex.printStackTrace();

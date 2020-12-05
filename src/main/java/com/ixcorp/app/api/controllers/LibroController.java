@@ -22,16 +22,15 @@ public class LibroController {
     private LibroService libroService;
 
     @GetMapping("/listaLibro")
-    public ResponseEntity<ServiceResult> listarAutor() {
+    public List<LibroDTO> listarAutor() {
 
         try {
 
             ServiceResult result = new ServiceResult();
             List<LibroDTO> libroDTOS = libroService.ListLibro();
 
-            result.setData(libroDTOS);
 
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return libroDTOS;
 
         } catch (Exception ex) {
             ex.printStackTrace();

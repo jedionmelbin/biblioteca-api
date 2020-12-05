@@ -2,6 +2,7 @@ package com.ixcorp.app.api.controllers;
 
 import com.ixcorp.app.api.config.ServiceResult;
 
+import com.ixcorp.app.api.domain.Autor;
 import com.ixcorp.app.api.dto.AutorDTO;
 import com.ixcorp.app.api.service.AutorService;
 import org.slf4j.Logger;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -25,16 +28,13 @@ public class AutorController {
     private AutorService autorService;
 
     @GetMapping("/listaAutor")
-    public ResponseEntity<ServiceResult> listarAutor() {
+    public List<AutorDTO> listarAutor() {
 
         try {
 
             ServiceResult result = new ServiceResult();
             List<AutorDTO> autorDTOS = autorService.ListAutor();
-
-            result.setData(autorDTOS);
-
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return  autorDTOS;
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -43,27 +43,20 @@ public class AutorController {
 
     }
 
+
     @PostMapping("/create")
-    public ResponseEntity<ServiceResult> createAutor(@RequestBody AutorDTO autor) {
+    public ResponseEntity<Object> createAutor(@RequestBody AutorDTO autor) {
+        AutorDTO saveAutor = autorService.Create(autor);
 
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(saveAutor.getAutorId()).toUri();
 
-        try {
-            ServiceResult result = new ServiceResult();
-            AutorDTO saveAutor = autorService.Create(autor);
-
-            result.setData(saveAutor);
-
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-
-            throw ex;
-        }
+        return ResponseEntity.created(location).build();
 
     }
 
     @PutMapping("/update")
-    public ResponseEntity<ServiceResult> updateAutor(@RequestBody AutorDTO autor) {
+    public ResponseEntity<AutorDTO> updateAutor(@RequestBody AutorDTO autor) {
 
 
         try {
@@ -72,7 +65,7 @@ public class AutorController {
 
             result.setData(saveAutor);
 
-            return new ResponseEntity<>(result, HttpStatus.FOUND);
+            return new ResponseEntity<>(saveAutor, HttpStatus.FOUND);
         } catch (Exception ex) {
             ex.printStackTrace();
 
