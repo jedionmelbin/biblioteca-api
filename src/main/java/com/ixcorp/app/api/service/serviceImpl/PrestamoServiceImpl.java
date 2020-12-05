@@ -39,7 +39,8 @@ public class PrestamoServiceImpl implements PrestamoService {
             Optional<Cliente> cliente = clienteRepository.
                     findById(prestamoDTO.getClientes().getClienteId());
 
-            Optional<Libro> libros = libroRepository.findById(prestamoDTO.getLibro().getLibroId());
+            Optional<Libro> libros = libroRepository
+                    .findById(prestamoDTO.getLibro().getLibroId());
 
 
             Prestamo prestamo = ObjectMapperUtils.map(prestamoDTO, Prestamo.class);

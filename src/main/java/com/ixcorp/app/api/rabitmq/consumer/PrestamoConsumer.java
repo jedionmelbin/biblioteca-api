@@ -23,12 +23,15 @@ public class PrestamoConsumer {
         logger.debug("Create message que");
         try {
 
-            prestamoService.createPrestamo(prestamoStatus.getPrestamos());
-            System.out.println("Message received from queues" + prestamoStatus.toString());
+            if (prestamoStatus.getPrestamos().getClientes().getClienteId() != 0) {
+                prestamoService.createPrestamo(prestamoStatus.getPrestamos());
+                System.out.println("Message received from queues" + prestamoStatus.toString());
+            }
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            logger.error(ex.getMessage(),"Error en servicio de mensajeria");
+            logger.error(ex.getMessage(), "Error en servicio de mensajeria");
             throw ex;
         }
 

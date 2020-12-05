@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/libros")
+@CrossOrigin(origins = "*")
 public class LibroController {
 
     private static final Logger logger = LoggerFactory.getLogger(PrestamoController.class);

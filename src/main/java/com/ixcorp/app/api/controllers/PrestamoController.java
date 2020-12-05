@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/prestamos")
+@CrossOrigin(origins = "*")
 public class PrestamoController {
 
     private static final Logger logger = LoggerFactory.getLogger(PrestamoController.class);

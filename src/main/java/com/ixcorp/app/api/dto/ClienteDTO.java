@@ -1,8 +1,6 @@
 package com.ixcorp.app.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.Column;
 import java.util.Date;
 
 public class ClienteDTO {

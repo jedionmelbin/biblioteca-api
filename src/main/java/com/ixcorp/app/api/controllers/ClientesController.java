@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
+@RestController
 @RequestMapping("api/clientes")
-public class ClienteController {
+@CrossOrigin(origins = "*")
+public class ClientesController {
     private static final Logger logger = LoggerFactory.getLogger(PrestamoController.class);
 
 
@@ -22,7 +23,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping("/listaCliente")
-    public List<ClienteDTO> listarAutor() {
+    public List<ClienteDTO> listaCliente() {
 
         try {
 
@@ -32,6 +33,7 @@ public class ClienteController {
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            logger.error(ex.getMessage());
             throw ex;
         }
 
@@ -50,7 +52,7 @@ public class ClienteController {
             return new ResponseEntity<>(result, HttpStatus.FOUND);
         } catch (Exception ex) {
             ex.printStackTrace();
-
+            logger.error(ex.getMessage());
             throw ex;
         }
 
@@ -69,7 +71,7 @@ public class ClienteController {
             return new ResponseEntity<>(result, HttpStatus.FOUND);
         } catch (Exception ex) {
             ex.printStackTrace();
-
+            logger.error(ex.getMessage());
             throw ex;
         }
 
